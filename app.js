@@ -143,3 +143,185 @@ return s2
 }
 }
 console.log(stackToQueue([1,2,3,4]))
+
+
+// linked list
+// Create a function that takes a LinkedList and deletes the middle node in it and returns it
+// / Javascript program to delete the 
+// middle of a linked list
+  
+  
+    /* Link list Node */
+     class Node {
+        constructor() {
+            this.data = 0;
+            this.next = null;
+        }
+    }
+    // Deletes middle node and returns
+    // head of the modified list
+    function deleteMid( head) {
+        // Base cases
+        if (head == null)
+            return null;
+        if (head.next == null) {
+            return null;
+        }
+  
+        // Initialize slow and fast pointers
+        // to reach middle of linked list
+        let slow_ptr = head;
+        let fast_ptr = head;
+  
+        // Find the middle and previous of middle.
+        let prev = null;
+  
+        // To store previous of slow_ptr
+        while (fast_ptr != null && fast_ptr.next != null) 
+        {
+            fast_ptr = fast_ptr.next.next;
+            prev = slow_ptr;
+            slow_ptr = slow_ptr.next;
+        }
+  
+        // Delete the middle node
+        prev.next = slow_ptr.next;
+  
+        return head;
+    }
+  
+    // A utility function to print
+    // a given linked list
+    function printList( ptr) {
+        while (ptr != null) {
+            document.write(ptr.data + "->");
+            ptr = ptr.next;
+        }
+        document.write("NULL<br/>");
+    }
+  
+    // Utility function to create a new node.
+    function newNode(data) {
+         temp = new Node();
+        temp.data = data;
+        temp.next = null;
+        return temp;
+    }
+  
+    /* Driver code */
+      
+        /* Start with the empty list */
+         head = newNode(1);
+        head.next = newNode(2);
+        head.next.next = newNode(3);
+        head.next.next.next = newNode(4);
+  
+        document.write("Given Linked List<br/>");
+        printList(head);
+  
+        head = deleteMid(head);
+  
+        document.write(
+        "Linked List after deletion of middle<br/>"
+        );
+        printList(head);
+
+
+        // 2nd 
+        
+        // class Node
+        // {
+        //      constructor(){
+        //     this.data = 0;
+        //     this.next = null;
+        // }
+        // }
+        var head = null;
+        // Function to reverse the
+        // linked list
+        function reverseLL()
+        {  
+             
+            // Create a stack "s"
+            // of Node type
+            var s = [];
+            var temp = head;
+            while (temp.next != null)
+            {
+                 
+                // Push all the nodes
+                // in to stack
+                s.push(temp);
+                temp = temp.next;
+            }
+            head = temp;
+           
+            while (s.length!=0)
+            {
+                 
+                // Store the top value of
+                // stack in list
+                temp.next = s.pop();
+               
+               
+               
+                // update the next pointer in the
+                // in the list
+                temp = temp.next;
+            }
+            temp.next = null;
+        }
+         
+        // Function to Display
+        // the elements in List
+        function printlist(temp)
+        {
+            while (temp != null)
+            {
+                document.write(temp.data+ " ");
+                temp = temp.next;
+            }
+        }
+         
+        // Program to insert back of the
+        // linked list
+        function insert_back(  value)
+        {
+         
+            // we have used insertion at back method
+            // to enter values in the list.(eg:
+            // head.1.2.3.4.Null)
+            var temp = new Node();
+            temp.data = value;
+            temp.next = null;
+             
+            // If *head equals to null
+            if (head == null)
+            {
+              head = temp;
+              return;
+            }
+            else
+            {
+              var last_node = head;
+              while (last_node.next != null)
+              {
+                last_node = last_node.next;
+              }
+              last_node.next = temp;
+              return;
+            }
+        }
+         
+        // Driver Code
+         
+                insert_back(1);
+                insert_back(2);
+                insert_back(3);
+                insert_back(4);
+                document.write("Given linked list\n");
+                printlist(head);
+                reverseLL();
+                document.write("<br/>Reversed linked list\n");
+                printlist(head);
+         
