@@ -42,30 +42,54 @@ console.log(reverseString("hello"))
 // substring(from index,to index) بتعطي جزء الي حددتو من السترينغ 
 // chartAt() بتعطي الحرف الموجود في الانديكس المطلوب
 /* Implement a function that returns the minimum element in a stack in constant time complexity.*/
-function getMinimum(str){
-  let stack=[];
-  let minStack=[];
-  for (let i = 0; i < str.length; i++) {
-    const element = str[i];
+// function getMinimum(str){
+//   let stack=[];
+//   let minStack=[];
+//   for (let i = 0; i < str.length; i++) {
+//     const element = str[i];
     
-    if(stack.length==0){
-    stack.push(element);
-    minStack.push(element);
-    }
+//     if(stack.length==0){
+//     stack.push(element);
+//     minStack.push(element);
+//     }
    
-    else{
-        stack.push(element);
-        if(Math.min(minStack[minStack.length-1])>element){
-            minStack.push(element)
-        }else{
-            minStack.push(minStack[minStack.length-1])
-        }
-    }
+//     else{
+//         stack.push(element);
+//         if(Math.min(minStack[minStack.length-1])>element){
+//             minStack.push(element)
+//         }else{
+//             minStack.push(minStack[minStack.length-1])
+//         }
+//     }
     
+// }
+// return minStack.pop()
+// }   
+// console.log(getMinimum([1,-5,-6,-7,8]));
+
+
+let stackQ1=[];
+let count=0;
+let min=0;
+start0=0;
+function push0(element){
+  stackQ1[count]=element;
+  count++;
+  console.log(`${element} added to ${count}`);
+  if(min==0 && start0==0){
+   min=element;
+   start0=1;
+  }else if(min> element){
+   min=element;
+ }
+   return count -1
 }
-return minStack.pop()
-}   
-console.log(getMinimum([1,-5,-6,-7,8]));
+
+push0(400)
+push0(200)
+push0(300)
+
+console.log(`${min} is the minimum element`)
 // Given a queue of integers, reverse the order of the elements in the queue.
 
 function reverse(int) {
